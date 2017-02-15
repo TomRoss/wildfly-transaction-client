@@ -29,7 +29,7 @@
     <parent>
         <groupId>org.jboss</groupId>
         <artifactId>jboss-parent</artifactId>
-        <version>21</version>
+        <version>21.0.0.redhat-1</version>
     </parent>
 
     <name>WildFly transaction client</name>
