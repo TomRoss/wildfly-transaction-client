@@ -16,15 +16,12 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.wildfly.transaction</groupId>
     <artifactId>wildfly-transaction-client</artifactId>
-    <version>1.1.6.Final</version>
+    <version>1.1.6.Final-redhat-00001</version>
 
     <parent>
         <groupId>org.jboss</groupId>
@@ -79,6 +76,56 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+        <groupId>org.commonjava.maven.plugins</groupId>
+        <artifactId>project-sources-maven-plugin</artifactId>
+        <version>0.3</version>
+        <executions>
+          <execution>
+            <id>project-sources-archive</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>archive</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+            <plugin>
+        <groupId>com.redhat.rcm.maven.plugin</groupId>
+        <artifactId>buildmetadata-maven-plugin</artifactId>
+        <version>1.7.0</version>
+        <executions>
+          <execution>
+            <id>build-metadata</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>provide-buildmetadata</goal>
+            </goals>
+            <configuration>
+              <addToLocations>
+                <addToLocation>${session.executionRootDirectory}</addToLocation>
+              </addToLocations>
+              <activateOutputFileMapping>true</activateOutputFileMapping>
+              <addBuildDateInfo>false</addBuildDateInfo>
+              <addLocallyModifiedTagToFullVersion>false</addLocallyModifiedTagToFullVersion>
+              <addHostInfo>false</addHostInfo>
+              <addJavaRuntimeInfo>true</addJavaRuntimeInfo>
+              <addToFilters>false</addToFilters>
+              <validateCheckout>false</validateCheckout>
+              <addOsInfo>false</addOsInfo>
+              <hideJavaOptsInfo>false</hideJavaOptsInfo>
+              <forceNewProperties>true</forceNewProperties>
+              <hideCommandLineInfo>false</hideCommandLineInfo>
+              <addBuildDateToFullVersion>false</addBuildDateToFullVersion>
+              <createPropertiesReport>true</createPropertiesReport>
+              <addToGeneratedSources>false</addToGeneratedSources>
+              <createXmlReport>false</createXmlReport>
+              <propertiesOutputFile>build.metadata</propertiesOutputFile>
+              <addMavenExecutionInfo>false</addMavenExecutionInfo>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
         </plugins>
     </build>
 
@@ -186,3 +233,7 @@
 
     </dependencies>
 </project>
+<!--
+Modified by POM Manipulation Extension for Maven 2.3.1 ( SHA: f64d03ba ) 
+-->
+
